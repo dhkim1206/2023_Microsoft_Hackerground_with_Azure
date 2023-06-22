@@ -242,3 +242,9 @@ vscode로 배포를 시작합니다.
 
 
 ![image](https://github.com/hackersground-kr/httpsgithubcomjchyngHackerGround/assets/69470424/adf6f04c-029a-4968-a034-54796a53c7fa)
+
+
+
+![image](https://github.com/hackersground-kr/httpsgithubcomjchyngHackerGround/assets/69470424/6c9c7b05-2422-4b17-88c6-e50c17200855)
+애저 포털에서 제일 처음에 만든 웹 앱 리소스 -> 기본 도메인 주소를 방문 배포 확인
+
