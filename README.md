@@ -41,7 +41,7 @@
 ## 시작하기
 
 
-1. 리포지토리를 포크합니다.
+1. 리포지토리를 포크합니다. https://github.com/hackersground-kr/httpsgithubcomjchyngHackerGround
 2. <Azure포털에서 리소스 생성> https://portal.azure.com/
    
   리소스 그룹 : 우리의 리소스를 모아둘 폴더 역할
