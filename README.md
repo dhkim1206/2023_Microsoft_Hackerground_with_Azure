@@ -142,21 +142,32 @@ github action 자동 배포 설정 방법
 저장 
 
 
-application.preperties설정
+application.preperties설정할게요
 ----------------------------------------------------------------------------------------------------------------------
 
-  포크한 파일 경로 : src->main->resource->application.properties 
+sql DB(SQL 데이터베이스) -> 설정 -> 연결 문자열 -> JDBC
   
+jdbc연결 문자열에서 가져온 코드 : jdbc:sqlserver://sqlserver-dhkim1206.database.windows.net:1433;database=sqldb-dhkim1206;user=dhkim1206@sqlserver-dhkim1206;password={your_password_here};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
 
-spring:
-  datasource:
-    url: jdbc:sqlserver://your-sql-server-url:1433;databaseName={{your-database-name}};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30
-    username: {{your-username}}
-    password: {{your-password}}
+에서 위에서 말 부분을 떼어와 해당 부분을 복사하여 저장해놓는다.
+위에 복사해서 저장해 놓은 코드를 나중에 다음과 같이 사용할 것이다.
 
-를 작성해줍니다. 
 
-{{your-database-name}} : Ex) sqlserver-dhkim1206(필자 예시)  / 데이터베이스 이름 기입
+spring.datasource.url = (jdbc연결 문자열에서 가져온 코드)
+
+
+포크한 파일 경로 : src->main->resource->application.properties 
+다음 경로에서의 해당 코드 부분을 자신에게 맞게 변경한다
+
+
+
+spring.datasource.driver-class-name=com.microsoft.sqlserver.jdbc.SQLServerDriver
+spring.datasource.url=jdbc:sqlserver://{{your-sql-server-url}}:1433;database={{your-database-name}};user=dhkim1206@sqlserver-dhkim1206;password={{your-password}};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
+spring.datasource.username= {{your-username}}
+spring.datasource.password= {{your-password}}
+
+
+spring.datasource.url = (jdbc연결 문자열에서 가져온 코드)
 
  {{your-username}} : Ex) dhkim1206 sql server(필자 예시) / 생성하면서 만들었던 관리자 이름을 기입합니다 
  
