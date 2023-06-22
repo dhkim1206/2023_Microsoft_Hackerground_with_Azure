@@ -32,7 +32,7 @@
 
 - 크롬 최신버전 https://www.google.com/chrome/
 - 자신의 OS에 맞는 드라이버를 설치해서 Resource에 Driver파일에 넣으시면 됩니다 https://chromedriver.storage.googleapis.com/index.html?path=114.0.5735.16/
-- VSCODE(Azure Tools확장장)
+- VSCODE(Azure Tools확장, Extension Pack for Java 확장)
 
 ## 시작하기
 - 리포지토리를 포크합니다.
