@@ -160,6 +160,9 @@ spring.datasource.url = (jdbc연결 문자열에서 가져온 코드)
 다음 경로에서의 해당 코드 부분을 자신에게 맞게 변경한다
 
 
+![image](https://github.com/hackersground-kr/httpsgithubcomjchyngHackerGround/assets/69470424/65ee6779-f1aa-40b8-bc76-199a9cfbf893)
+
+
 
 spring.datasource.driver-class-name=com.microsoft.sqlserver.jdbc.SQLServerDriver
 spring.datasource.url=jdbc:sqlserver://{{your-sql-server-url}}:1433;database={{your-database-name}};user=dhkim1206@sqlserver-dhkim1206;password={{your-password}};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
