@@ -6,39 +6,101 @@ import {
   View,
   Switch,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Font from './../components/Font';
 import { WithLocalSvg } from 'react-native-svg';
 import Back from './../assets/back.svg';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const onBack = ({ navigation }) => {
-  navigation.nagigate('Seting');
-};
+const Notification = ({ navigation }) => {
+  const [topicCheck, setTopicCheck] = useState({
+    지원사업공고: false,
+    입주공간: false,
+    공기업: false,
+    공무원: false,
+    사기업: false,
+    일자리: false,
+    주거: false,
+    교육: false,
+    복지문화: false,
+  });
+  const [token, setToken] = useState('');
 
-const Notification = () => {
-  const [topicCheck, setTopicCheck] = useState([
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-  ]);
+  useEffect(() => {
+    onGetInfo();
+  }, [onGetInfo]);
 
-  const onCheck = index => {
-    const newCheck = [...topicCheck];
+  const onGetInfo = useCallback(async () => {
+    const getToken = await AsyncStorage.getItem('token');
+    const getTopicList = JSON.parse(await AsyncStorage.getItem('topicList'));
 
-    newCheck[index] = !newCheck[index];
-    setTopicCheck(newCheck);
+    setToken(getToken);
+    if (getTopicList.length > 0) setIsAlert(true);
+
+    Object.keys(topicCheck).map(item => {
+      getTopicList.map(topic => {
+        if (topic === item) {
+          setTopicCheck({ ...topicCheck, [item]: true });
+        }
+      });
+    });
+  }, [topicCheck]);
+
+  const onCheck = text => {
+    setTopicCheck(current => {
+      let newTopicCheck = { ...current };
+      newTopicCheck[text] = !newTopicCheck[text];
+      return newTopicCheck;
+    });
+  };
+
+  const onFetch = async () => {
+    try {
+      let arr = [];
+      Object.keys(topicCheck).map(item => topicCheck[item] && arr.push(item));
+      await AsyncStorage.setItem('topicList', JSON.stringify(arr));
+      const data = { [token]: arr };
+      console.log(data);
+      // const response = await fetch('', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify(data),
+      // });
+      // console.log('POST 성공 : ' + response);
+    } catch (error) {
+      console.error('POST 실패 : ' + error);
+    }
   };
 
   const [isAlert, setIsAlert] = useState(false);
-  const toggleAlertSwitch = () => setIsAlert(previousState => !previousState);
-
   const [isNightAlert, setIsNightAlert] = useState(false);
-  const toggleNightSwitch = () => setIsNightAlert(previousState => !previousState);
+
+  const toggleSwitch = async text => {
+    if (text === 'alert') {
+      setIsAlert(previousState => !previousState);
+      if (isAlert === false) {
+        setTopicCheck({
+          지원사업공고: false,
+          입주공간: false,
+          공기업: false,
+          공무원: false,
+          사기업: false,
+          일자리: false,
+          주거: false,
+          교육: false,
+          복지문화: false,
+        });
+        await AsyncStorage.setItem('topicList', JSON.stringify([]));
+      }
+    } else setIsNightAlert(previousState => !previousState);
+  };
+
+  const onBack = () => {
+    onFetch();
+    navigation.navigate('Nav', { screen: 'Setting' });
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -54,26 +116,26 @@ const Notification = () => {
         <View style={styles.alert}>
           <View style={styles.doAlert}>
             <Text>
-              <Font text='알람 여부' />
+              <Font text="알람 여부" />
             </Text>
             <Switch
               trackColor={{ false: '#767577', true: '#3F86F8' }}
               thumbColor={isAlert ? '#f5dd4b' : '#f4f3f4'}
               ios_backgroundColor="#3e3e3e"
-              onValueChange={toggleAlertSwitch}
+              onValueChange={() => toggleSwitch('alert')}
               value={isAlert}
             />
           </View>
           <View style={styles.nightAlert}>
             <View style={styles.nightAlertMessage}>
-              <Font text='방해 금지 모드' />
-              <Font text='(23시 ~ 8시)' />
+              <Font text="방해 금지 모드" />
+              <Font text="(23시 ~ 8시)" />
             </View>
             <Switch
               trackColor={{ false: '#767577', true: '#3F86F8' }}
               thumbColor={isNightAlert ? '#f5dd4b' : '#f4f3f4'}
               ios_backgroundColor="#3e3e3e"
-              onValueChange={toggleNightSwitch}
+              onValueChange={() => toggleSwitch('night')}
               value={isNightAlert}
             />
           </View>
@@ -85,52 +147,41 @@ const Notification = () => {
             </Text>
             <View style={styles.topicButtonList}>
               <TouchableOpacity
-                onPress={() => onCheck(0)}
-                style={[styles.topicButton, topicCheck[0] ? styles.checkButton : styles.disabledButton]}>
-                <Text style={[styles.topicText, topicCheck[0] ? styles.checkText : styles.topicText]}>
+                disabled={!isAlert}
+                onPress={() => onCheck('지역사업공고')}
+                style={[
+                  styles.topicButton,
+                  topicCheck['지역사업공고']
+                    ? styles.checkButton
+                    : styles.disabledButton,
+                ]}>
+                <Text
+                  style={[
+                    styles.topicText,
+                    topicCheck['지역사업공고']
+                      ? styles.checkText
+                      : styles.topicText,
+                  ]}>
                   <Font text={'지원 사업 공고'} />
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => onCheck(1)}
-                style={[styles.topicButton, topicCheck[1] ? styles.checkButton : styles.disabledButton]}>
-                <Text style={[styles.topicText, topicCheck[1] ? styles.checkText : styles.topicText]}>
+                disabled={!isAlert}
+                onPress={() => onCheck('입주공간')}
+                style={[
+                  styles.topicButton,
+                  topicCheck['입주공간']
+                    ? styles.checkButton
+                    : styles.disabledButton,
+                ]}>
+                <Text
+                  style={[
+                    styles.topicText,
+                    topicCheck['입주공간']
+                      ? styles.checkText
+                      : styles.topicText,
+                  ]}>
                   <Font text={'입주 공간'} />
-                </Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-          <View style={styles.topicItem}>
-            <Text style={styles.topicTitle}>
-              <Font text={'청년 정책 : 대구 청년들을 위한 정책'} />
-            </Text>
-            <View style={styles.topicButtonList}>
-              <TouchableOpacity
-                onPress={() => onCheck(2)}
-                style={[styles.topicButton, topicCheck[2] ? styles.checkButton : styles.disabledButton]}>
-                <Text style={[styles.topicText, topicCheck[2] ? styles.checkText : styles.topicText]}>
-                  <Font text={'일자리'} />
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => onCheck(3)}
-                style={[styles.topicButton, topicCheck[3] ? styles.checkButton : styles.disabledButton]}>
-                <Text style={[styles.topicText, topicCheck[3] ? styles.checkText : styles.topicText]}>
-                  <Font text={'추가'} />
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => onCheck(4)}
-                style={[styles.topicButton, topicCheck[4] ? styles.checkButton : styles.disabledButton]}>
-                <Text style={[styles.topicText, topicCheck[4] ? styles.checkText : styles.topicText]}>
-                  <Font text={'교육'} />
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => onCheck(5)}
-                style={[styles.topicButton, topicCheck[5] ? styles.checkButton : styles.disabledButton]}>
-                <Text style={[styles.topicText, topicCheck[5] ? styles.checkText : styles.topicText]}>
-                  <Font text={'복지 문화'} />
                 </Text>
               </TouchableOpacity>
             </View>
@@ -141,24 +192,131 @@ const Notification = () => {
             </Text>
             <View style={styles.topicButtonList}>
               <TouchableOpacity
-                onPress={() => onCheck(6)}
-                style={[styles.topicButton, topicCheck[6] ? styles.checkButton : styles.disabledButton]}>
-                <Text style={[styles.topicText, topicCheck[6] ? styles.checkText : styles.topicText]}>
+                disabled={!isAlert}
+                onPress={() => onCheck('공무원')}
+                style={[
+                  styles.topicButton,
+                  topicCheck['공무원']
+                    ? styles.checkButton
+                    : styles.disabledButton,
+                ]}>
+                <Text
+                  style={[
+                    styles.topicText,
+                    topicCheck['공무원'] ? styles.checkText : styles.topicText,
+                  ]}>
                   <Font text={'공무원'} />
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => onCheck(7)}
-                style={[styles.topicButton, topicCheck[7] ? styles.checkButton : styles.disabledButton]}>
-                <Text style={[styles.topicText, topicCheck[7] ? styles.checkText : styles.topicText]}>
+                disabled={!isAlert}
+                onPress={() => onCheck('공기업')}
+                style={[
+                  styles.topicButton,
+                  topicCheck['공기업']
+                    ? styles.checkButton
+                    : styles.disabledButton,
+                ]}>
+                <Text
+                  style={[
+                    styles.topicText,
+                    topicCheck['공기업'] ? styles.checkText : styles.topicText,
+                  ]}>
                   <Font text={'공기업'} />
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => onCheck(8)}
-                style={[styles.topicButton, topicCheck[8] ? styles.checkButton : styles.disabledButton]}>
-                <Text style={[styles.topicText, topicCheck[8] ? styles.checkText : styles.topicText]}>
+                disabled={!isAlert}
+                onPress={() => onCheck('사기업')}
+                style={[
+                  styles.topicButton,
+                  topicCheck['사기업']
+                    ? styles.checkButton
+                    : styles.disabledButton,
+                ]}>
+                <Text
+                  style={[
+                    styles.topicText,
+                    topicCheck['사기업'] ? styles.checkText : styles.topicText,
+                  ]}>
                   <Font text={'사기업'} />
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+          <View style={styles.topicItem}>
+            <Text style={styles.topicTitle}>
+              <Font text={'청년 정책 : 대구 청년들을 위한 정책'} />
+            </Text>
+            <View style={styles.topicButtonList}>
+              <TouchableOpacity
+                disabled={!isAlert}
+                onPress={() => onCheck('일자리')}
+                style={[
+                  styles.topicButton,
+                  topicCheck['일자리']
+                    ? styles.checkButton
+                    : styles.disabledButton,
+                ]}>
+                <Text
+                  style={[
+                    styles.topicText,
+                    topicCheck['일자리'] ? styles.checkText : styles.topicText,
+                  ]}>
+                  <Font text={'일자리'} />
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                disabled={!isAlert}
+                onPress={() => onCheck('주거')}
+                style={[
+                  styles.topicButton,
+                  topicCheck['주거']
+                    ? styles.checkButton
+                    : styles.disabledButton,
+                ]}>
+                <Text
+                  style={[
+                    styles.topicText,
+                    topicCheck['주거'] ? styles.checkText : styles.topicText,
+                  ]}>
+                  <Font text={'주거'} />
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                disabled={!isAlert}
+                onPress={() => onCheck('교육')}
+                style={[
+                  styles.topicButton,
+                  topicCheck['교육']
+                    ? styles.checkButton
+                    : styles.disabledButton,
+                ]}>
+                <Text
+                  style={[
+                    styles.topicText,
+                    topicCheck['교육'] ? styles.checkText : styles.topicText,
+                  ]}>
+                  <Font text={'교육'} />
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                disabled={!isAlert}
+                onPress={() => onCheck('복지문화')}
+                style={[
+                  styles.topicButton,
+                  topicCheck['복지문화']
+                    ? styles.checkButton
+                    : styles.disabledButton,
+                ]}>
+                <Text
+                  style={[
+                    styles.topicText,
+                    topicCheck['복지문화']
+                      ? styles.checkText
+                      : styles.topicText,
+                  ]}>
+                  <Font text={'복지 문화'} />
                 </Text>
               </TouchableOpacity>
             </View>
@@ -176,7 +334,7 @@ const Notification = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#F4F4F4'
+    backgroundColor: '#F4F4F4',
   },
   header: {
     backgroundColor: '#fff',
@@ -186,7 +344,6 @@ const styles = StyleSheet.create({
     paddingTop: 30,
     borderBottomWidth: 1,
     borderColor: '#7F7F7F',
-    backgroundColor: '#fff',
   },
   back: {
     marginTop: 5,

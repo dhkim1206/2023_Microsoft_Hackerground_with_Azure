@@ -6,10 +6,11 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Font from './../../components/Font';
 import { WithLocalSvg } from 'react-native-svg';
 import Bookmark from '../../assets/bookmark.svg';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const data = [
   {
@@ -95,6 +96,33 @@ export const data = [
 ];
 const Dash = ({ navigation }) => {
   const [isActive, setIsActive] = useState(0);
+
+  const [token, setToken] = useState('');
+
+  const onGetToken = async () => {
+    const getToken = await AsyncStorage.getItem('token');
+    setToken(getToken);
+  };
+
+  const onFetchGet = async () => {
+    try {
+      // const response = await fetch('', {
+      //   method: 'GET',
+      //   headers: {
+      //     'Content-Type': 'Application/json',
+      //   },
+      // });
+      // console.log('성공 : ' + response);
+    } catch (error) {
+      console.error('실패 : ' + error);
+    }
+  };
+
+  useEffect(() => {
+    onGetToken();
+    onFetchGet();
+  }, []);
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -114,7 +142,10 @@ const Dash = ({ navigation }) => {
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => setIsActive(1)}
+            onPress={() => {
+              setIsActive(1);
+              AsyncStorage.clear();
+            }}
             style={styles.categoryButton}>
             <Text
               style={[

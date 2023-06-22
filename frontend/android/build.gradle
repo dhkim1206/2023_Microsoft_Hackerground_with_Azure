@@ -27,6 +27,8 @@ buildscript {
         classpath("de.undercouch:gradle-download-task:4.1.2")
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+
+        classpath 'com.google.gms:google-services:4.3.15'
     }
 }
 
@@ -40,6 +42,10 @@ allprojects {
             // Android JSC is installed from npm
             url("$rootDir/../node_modules/jsc-android/dist")
         }
+
+        mavenCentral()  // Maven Central repository
+        google()
+
         mavenCentral {
             // We don't want to fetch react-native from Maven Central as there are
             // older versions over there.
@@ -47,7 +53,6 @@ allprojects {
                 excludeGroup "com.facebook.react"
             }
         }
-        google()
         maven { url 'https://www.jitpack.io' }
     }
 }
