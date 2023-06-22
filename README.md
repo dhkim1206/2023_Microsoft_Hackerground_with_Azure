@@ -31,7 +31,11 @@
 ### 사전 준비 사항
 
 - 크롬 최신버전 https://www.google.com/chrome/
+
+  
 - 자신의 OS에 맞는 드라이버를 설치해서 Resource에 Driver파일에 넣으시면 됩니다 https://chromedriver.storage.googleapis.com/index.html?path=114.0.5735.16/
+
+  
 - VSCODE(Azure Tools확장, Extension Pack for Java 확장)
 
 ## 시작하기
@@ -60,13 +64,29 @@ Hackers Ground 구독에서는 저희가 직접 리소스 그룹을 만들 수 �
 ![image](https://github.com/hackersground-kr/httpsgithubcomjchyngHackerGround/assets/69470424/ef038d43-c2dc-4d72-bfe0-804693404817)
 
 리소스 그룹 : 앞 서 할당 받은 리소스 그룹 선택 (필자의 경우 Hackers Ground)
+
+
 인스턴스 정보 : {사용자 지정} - Ex) dhkim1206
+
+
 게시 : 코드
+
+
 런타임 스택 : Java 11
+
+
 Java 웹 서버 스택 : Java Se(Embedded Web Server)
+
+
 운영체제 : Linux
+
+
 지역 : Korea Central
+
+
 ![image](https://github.com/hackersground-kr/httpsgithubcomjchyngHackerGround/assets/69470424/356680d7-a263-464d-bc2f-5114c4106483)
+
+
 <Linux 플랜>
 새로 만들기 클릭
 가격 책정 플랜 - 기본 B1 선택
@@ -85,8 +105,14 @@ Java 웹 서버 스택 : Java Se(Embedded Web Server)
 <인증 방법>
 
 SQL 인증 사용
+
+
 서버 관리자 이름, 암호 작성
+
+
 관리자 이름과 암호를 알아야 DB 접속 후 확인이 가능하기 때문에 메모해둡니다.
+
+
 
 <네트워킹>
 
@@ -217,7 +243,6 @@ vscode로 배포를 시작합니다.
 ![image](https://github.com/hackersground-kr/httpsgithubcomjchyngHackerGround/assets/69470424/c8fa3879-bd29-4a7a-b0b9-a69a78485251)
 
 
-스냅샷 선택
 이미지와 같이 스냅샷 선택
 
 
