@@ -38,7 +38,7 @@
 
 ## 제품 아키텍처 (이미지)
 
-**(필수)** 제품 또는 서비스의 전체 구성도 또는 아키텍처를 이미지로 작성해 주세요. 이미지는 [images](./images) 디렉토리에 저장한 후 이곳에 링크를 걸어주세요.
+https://docs.google.com/presentation/d/1U5bsCZYuUfGs_AI0JvSMsm4HJqEI9UXP6NKqkQxB5lU/edit#slide=id.g2548690ba49_0_0
 
 ## 제품 소개 슬라이드
 
