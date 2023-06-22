@@ -1,4 +1,4 @@
-package com.hackerground.crawlingnotiserver.entity;
+package com.example.demo.entity;
 
 
 import java.util.List;

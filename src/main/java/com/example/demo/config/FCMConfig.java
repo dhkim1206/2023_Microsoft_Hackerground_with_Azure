@@ -14,7 +14,7 @@ import java.util.List;
 
 @Configuration
 public class FCMConfig {
-    @Bean
+    @Bean //싱글톤 객체로 생성하여 관리하기 위해 @Configuration과 함께 사용
     FirebaseMessaging firebaseMessaging() throws IOException {
         ClassPathResource resource = new ClassPathResource("firebase/deagu-news-supporter-firebase-adminsdk-s297r-72f614262a.json");
 

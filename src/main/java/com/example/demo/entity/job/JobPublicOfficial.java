@@ -1,6 +1,6 @@
-package com.hackerground.crawlingnotiserver.entity.job;
+package com.example.demo.entity.job;
 
 public class JobPublicOfficial {
-    private String title;
-    private String link;
+    String title;
+    String link;
 }

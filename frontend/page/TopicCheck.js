@@ -102,6 +102,7 @@ const TopicCheck = ({ navigation }) => {
     } catch (error) {
       console.error('POST 실패 : ' + error);
     }
+
   };
 
   return (
@@ -121,6 +122,7 @@ const TopicCheck = ({ navigation }) => {
           </Text>
           <View style={styles.topicButtonList}>
             <TouchableOpacity
+
               onPress={() => onCheck('지원사업공고')}
               style={[
                 styles.topicButton,
@@ -153,6 +155,7 @@ const TopicCheck = ({ navigation }) => {
                 ]}>
                 <Font text={'입주 공간'} />
               </Text>
+
             </TouchableOpacity>
           </View>
         </View>
@@ -289,17 +292,11 @@ const TopicCheck = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    width: '100%',
-    height: '100%',
-  },
+  container: {},
   header: {
-    flex: 2,
     borderBottomWidth: 1,
     marginHorizontal: 20,
-    marginTop: 15,
-    paddingVertical: 20,
+    paddingVertical: 16,
   },
   mainTitle: {
     fontSize: 24,
@@ -308,46 +305,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   topicContainer: {
-    flex: 20,
     padding: 20,
   },
   topicItem: {
-    marginVertical: '10%',
-  },
-  topicTitle: {
     marginBottom: 10,
   },
-  topicButton: {
-    height: 30,
-    padding: 5,
-    borderWidth: 1,
-    borderRadius: 5,
-    marginRight: 20,
-  },
-  topicButtonList: {
-    flex: 1,
-    flexDirection: 'row',
-  },
-  nextButton: {
-    flex: 3,
-    justifyContent: 'center',
-    width: '100%',
-    backgroundColor: '#3F86F8',
-  },
-  checkButton: {
-    backgroundColor: '#3F86F8',
-    borderColor: '#3F86F8',
-    color: '#fff',
-  },
-  disabledButton: {
-    backgroundColor: '#fff',
-    borderColor: '#B6B6B6',
-  },
-  nextText: {
-    fontSize: 20,
-    color: '#fff',
-    textAlign: 'center',
-  },
+  topicTitle: {},
 });
 
 export default TopicCheck;

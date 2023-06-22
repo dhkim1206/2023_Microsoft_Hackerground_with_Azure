@@ -38,11 +38,11 @@
 
 ## 제품 아키텍처 (이미지)
 
-**(필수)** 제품 또는 서비스의 전체 구성도 또는 아키텍처를 이미지로 작성해 주세요. 이미지는 [images](./images) 디렉토리에 저장한 후 이곳에 링크를 걸어주세요.
+![image](https://raw.githubusercontent.com/hackersground-kr/httpsgithubcomjchyngHackerGround/main/images/%ED%95%B4%EC%BB%A4%ED%86%A4%20%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98.png)
 
 ## 제품 소개 슬라이드
 
-**(필수)** 제품 또는 서비스를 소개하는 슬라이드 덱을 리포지토리에 추가해 주세요. 슬라이드 덱은 [decks](./decks) 디렉토리에 저장한 후 이곳에 링크를 걸어주세요.
+[슬라이드 보러가기](https://github.com/hackersground-kr/httpsgithubcomjchyngHackerGround/blob/main/decks/%EC%B2%AD%EB%85%84%20%EC%A0%95%EC%B1%85%20%EC%95%8C%EB%A6%BC%EC%9D%B4%20-%20%EC%96%B4%EB%8D%B0%EA%B0%80%EB%85%B8.pdf)
 
 ## 제품 소개 동영상
 

@@ -5,8 +5,6 @@ import lombok.NoArgsConstructor;
 import org.jsoup.nodes.Element;
 
 import javax.persistence.Entity;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 //지원사업 공고

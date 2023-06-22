@@ -11,6 +11,7 @@ const Font = ({ text }) => {
 
 const styles = StyleSheet.create({
   fontStyle: {
+    color: '#000000',
     fontFamily: 'Pretendard-Bold',
   },
 });

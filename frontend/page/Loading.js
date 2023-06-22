@@ -1,8 +1,10 @@
+
 import React, { useEffect } from 'react';
 import { SafeAreaView, StyleSheet, Text } from 'react-native';
 import LogoSvg from '../assets/logo.svg';
 import { WithLocalSvg } from 'react-native-svg';
 import Font from '../components/Font';
+
 
 const Loading = ({ navigation }) => {
   useEffect(() => {
@@ -10,6 +12,7 @@ const Loading = ({ navigation }) => {
       navigation.navigate('TopicCheck');
     }, 2000);
   }, [navigation]);
+
   return (
     <SafeAreaView style={styles.container}>
       <WithLocalSvg asset={LogoSvg} />
