@@ -5,56 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53cbd06f-4a65-45cb-83da-a1404e2d2320" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/CrawlingApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/AnnouncementController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/SubscribeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/SubscribeDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/TokenDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/entity/youth/Education.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/entity/youth/Jobs.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/entity/youth/Residence.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/entity/youth/Welfare.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/fcm/MemorySubscribeRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/job/JobCompanyRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/job/JobPublicCompanyRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/SubscribeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/job/JobCompanyService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/job/JobPublicCompanyService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/driver/chromedriver" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/DemoApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/config/FCMConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/config/FCMConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/constant/NotiOptions.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/constant/URLs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/constant/URLs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/dto/FCMMessage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/entity/JobPotal.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/entity/dash/DashAnnouncement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/entity/dash/DashAnnouncement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/entity/dash/DashSpace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/entity/dash/DashSpace.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/entity/job/JobCompany.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/entity/job/JobCompany.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/entity/job/JobPublicCompany.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/entity/job/JobPublicCompany.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/entity/job/JobPublicOfficial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/entity/job/JobPublicOfficial.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/dash/DashSpaceRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repository/dash/DashSpaceRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/FCMNotificationService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/dash/DashAnnouncementService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/dash/DashAnnouncementService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/dash/DashSpaceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/dash/DashSpaceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/DemoApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/CrawlingApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/DemoApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/CrawlingApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/CrawlingApplication.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/config/FCMConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/config/FCMConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/constant/NotiOptions.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/constant/URLs.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/constant/URLs.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/dto/FCMMessage$FCMMessageBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/dto/FCMMessage$Message$MessageBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/dto/FCMMessage$Message.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/dto/FCMMessage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/entity/JobPotal$Curriculum.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/entity/JobPotal$Recruitment$Company.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/entity/JobPotal$Recruitment$PublicOfficial.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/entity/JobPotal$Recruitment.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/entity/JobPotal$SupportPolicy$Support.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/entity/JobPotal$SupportPolicy.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/entity/JobPotal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/controller/AnnouncementController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/AnnouncementController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/controller/SubscribeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/SubscribeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/dto/SubscribeDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/SubscribeDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/dto/TokenDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/dto/TokenDTO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/entity/YouthPolicy$Post.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/entity/YouthPolicy$Post.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/entity/YouthPolicy.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/entity/YouthPolicy.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/entity/dash/DashAnnouncement.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/entity/dash/DashAnnouncement.class" afterDir="false" />
@@ -62,12 +22,22 @@
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/entity/job/JobCompany.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/entity/job/JobCompany.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/entity/job/JobPublicCompany.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/entity/job/JobPublicCompany.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/entity/job/JobPublicOfficial.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/entity/job/JobPublicOfficial.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/entity/youth/Education.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/entity/youth/Education.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/entity/youth/Jobs.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/entity/youth/Jobs.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/entity/youth/Residence.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/entity/youth/Residence.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/entity/youth/Welfare.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/entity/youth/Welfare.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/repository/dash/DashAnnouncementRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/repository/dash/DashAnnouncementRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/repository/dash/DashSpaceRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/repository/dash/DashSpaceRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/service/FCMNotificationService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/repository/fcm/MemorySubscribeRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/repository/fcm/MemorySubscribeRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/repository/job/JobCompanyRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/repository/job/JobCompanyRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/repository/job/JobPublicCompanyRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/repository/job/JobPublicCompanyRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/service/SubscribeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/SubscribeService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/service/dash/DashAnnouncementService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/dash/DashAnnouncementService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/service/dash/DashSpaceService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/dash/DashSpaceService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/example/demo/DemoApplicationTests.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/service/job/JobCompanyService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/job/JobCompanyService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/service/job/JobPublicCompanyService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/job/JobPublicCompanyService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/example/crawling/CrawlingApplicationTests.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/example/demo/CrawlingApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/example/demo/CrawlingApplicationTests.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +82,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/해커그라운드 CICD 최종/httpsgithubcomjchyngHackerGround/target",
+    "last_opened_file_path": "C:/httpsgithubcomjchyngHackerGround",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/crawling.iml" filepath="$PROJECT_DIR$/crawling.iml" />
       <module fileurl="file://$PROJECT_DIR$/../java-docs-spring-hello-world.iml" filepath="$PROJECT_DIR$/../java-docs-spring-hello-world.iml" />
     </modules>
   </component>
