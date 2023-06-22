@@ -42,7 +42,7 @@
 
 ## 제품 소개 슬라이드
 
-[슬라이드 보러가기](https://github.com/hackersground-kr/httpsgithubcomjchyngHackerGround/blob/main/decks/%EC%B2%AD%EB%85%84%20%EC%A0%95%EC%B1%85%20%EC%95%8C%EB%A6%BC%EC%9D%B4%20-%20%EC%96%B4%EB%8D%B0%EA%B0%80%EB%85%B8.pdf)
+[슬라이드 보러가기](https://github.com/hackersground-kr/httpsgithubcomjchyngHackerGround/blob/main/decks/%EC%B2%AD%EB%85%84%20%EC%A0%95%EC%B1%85%20%EC%95%8C%EB%A6%BC%EC%9D%B4%20-%20%EC%96%B4%EB%8D%B0%EA%B0%80%EB%85%B8.pptx)
 
 ## 제품 소개 동영상
 
