@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:sqlserver://sqlserver-dhkim1206.database.windows.net:1433;databaseName=sqldb-dhkim1206;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
+    username: dhkim1206
+    password: rlaehgud3737!
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+
+
+
