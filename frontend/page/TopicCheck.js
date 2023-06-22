@@ -89,7 +89,6 @@ const TopicCheck = ({ navigation }) => {
         Object.keys(topicCheck).map(item => topicCheck[item] && arr.push(item));
         await AsyncStorage.setItem('topicList', JSON.stringify(arr));
         const data = { [token]: arr };
-        console.log(data);
         // const response = await fetch('', {
         //   method: 'POST',
         //   headers: {

@@ -37,14 +37,14 @@ const Notification = ({ navigation }) => {
     setToken(getToken);
     if (getTopicList.length > 0) setIsAlert(true);
 
-    Object.keys(topicCheck).map(item => {
-      getTopicList.map(topic => {
-        if (topic === item) {
-          setTopicCheck({ ...topicCheck, [item]: true });
-        }
+    getTopicList.map(topic => {
+      setTopicCheck(current => {
+        let newTopicCheck = { ...current };
+        newTopicCheck[topic] = !newTopicCheck[topic];
+        return newTopicCheck;
       });
     });
-  }, [topicCheck]);
+  }, []);
 
   const onCheck = text => {
     setTopicCheck(current => {
@@ -80,18 +80,18 @@ const Notification = ({ navigation }) => {
   const toggleSwitch = async text => {
     if (text === 'alert') {
       setIsAlert(previousState => !previousState);
+      setTopicCheck({
+        지원사업공고: false,
+        입주공간: false,
+        공기업: false,
+        공무원: false,
+        사기업: false,
+        일자리: false,
+        주거: false,
+        교육: false,
+        복지문화: false,
+      });
       if (isAlert === false) {
-        setTopicCheck({
-          지원사업공고: false,
-          입주공간: false,
-          공기업: false,
-          공무원: false,
-          사기업: false,
-          일자리: false,
-          주거: false,
-          교육: false,
-          복지문화: false,
-        });
         await AsyncStorage.setItem('topicList', JSON.stringify([]));
       }
     } else setIsNightAlert(previousState => !previousState);
@@ -141,7 +141,11 @@ const Notification = ({ navigation }) => {
           </View>
         </View>
         <View>
-          <View style={styles.topicItem}>
+          <View
+            style={[
+              styles.topicItem,
+              !isAlert ? styles.topicItemDisable : null,
+            ]}>
             <Text style={styles.topicTitle}>
               <Font text={'Dash : 대구 기술창업의 모든 것'} />
             </Text>
@@ -186,7 +190,11 @@ const Notification = ({ navigation }) => {
               </TouchableOpacity>
             </View>
           </View>
-          <View style={styles.topicItem}>
+          <View
+            style={[
+              styles.topicItem,
+              !isAlert ? styles.topicItemDisable : null,
+            ]}>
             <Text style={styles.topicTitle}>
               <Font text={'일자리 포털 : 채용 정보'} />
             </Text>
@@ -244,7 +252,11 @@ const Notification = ({ navigation }) => {
               </TouchableOpacity>
             </View>
           </View>
-          <View style={styles.topicItem}>
+          <View
+            style={[
+              styles.topicItem,
+              !isAlert ? styles.topicItemDisable : null,
+            ]}>
             <Text style={styles.topicTitle}>
               <Font text={'청년 정책 : 대구 청년들을 위한 정책'} />
             </Text>
@@ -373,6 +385,9 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     padding: '5%',
   },
+  topicItemDisable: {
+    backgroundColor: 'rgba(0,0,0,0.15)',
+  },
   topicItem: {
     backgroundColor: '#fff',
     width: '100%',
@@ -400,8 +415,8 @@ const styles = StyleSheet.create({
     color: '#fff',
   },
   disabledButton: {
-    backgroundColor: '#fff',
-    borderColor: '#B6B6B6',
+    borderColor: 'rgba(0,0,0,0.5)',
+    backgroundColor: 'transparent',
   },
   ms: {
     marginTop: '25%',
