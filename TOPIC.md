@@ -38,11 +38,11 @@
 
 ## 제품 아키텍처 (이미지)
 
-https://docs.google.com/presentation/d/1U5bsCZYuUfGs_AI0JvSMsm4HJqEI9UXP6NKqkQxB5lU/edit#slide=id.g2548690ba49_0_0
+![image](https://raw.githubusercontent.com/hackersground-kr/httpsgithubcomjchyngHackerGround/main/images/%ED%95%B4%EC%BB%A4%ED%86%A4%20%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98.png)
 
 ## 제품 소개 슬라이드
 
-![image](https://github.com/hackersground-kr/httpsgithubcomjchyngHackerGround/blob/main/decks/%EC%B2%AD%EB%85%84%20%EC%A0%95%EC%B1%85%20%EC%95%8C%EB%A6%BC%EC%9D%B4%20-%20%EC%96%B4%EB%8D%B0%EA%B0%80%EB%85%B8.pptx)
+[슬라이드 보러가기](https://github.com/hackersground-kr/httpsgithubcomjchyngHackerGround/blob/main/decks/%EC%B2%AD%EB%85%84%20%EC%A0%95%EC%B1%85%20%EC%95%8C%EB%A6%BC%EC%9D%B4%20-%20%EC%96%B4%EB%8D%B0%EA%B0%80%EB%85%B8.pdf)
 
 ## 제품 소개 동영상
 
