@@ -3,6 +3,7 @@ package com.example.demo.entity.job;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -25,47 +26,35 @@ public class JobCompany {
     public JobCompany(Element element) {
         setCompanyName(element);
         setTitle(element);
-        setLocation(element);
-        setCareer(element);
-        setEducation(element);
-        setPayType(element);
+        setInfo(element);
         setDday(element);
         setLink(element);
     }
 
     public void setCompanyName(Element element) {
-        String companyName = element.select("td b").first().text();
-        this.companyName = companyName;
+        this.companyName = element.select("b").first().text();
     }
-
 
     public void setTitle(Element element) {
-        this.title = title;
+        this.title = element.select("a").first().text();
     }
 
-    public void setLocation(Element element) {
-        this.location = location;
-    }
+    public void setInfo(Element element) {
+        Elements elements = element.select("li");
+        this.location = elements.get(0).text();
+        this.career = elements.get(1).text();
+        this.education = elements.get(2).text();
+        this.payType = elements.get(3).text();
 
-    public void setCareer(Element element) {
-        this.career = career;
-    }
-
-    public void setEducation(Element element) {
-        this.education = education;
-    }
-
-    public void setPayType(Element element) {
-        this.payType = payType;
     }
 
     public void setDday(Element element) {
-        this.dday = dday;
+        this.dday = element.select(".search_dday").first().text();
     }
 
     public void setLink(Element element) {
-        Element button = element.select("button").first();
-        String projectId = button.id();
-        this.link = "https://job.daegu.go.kr/daegujob/searchJobView?" + projectId;
+        this.id = element.select("button").first().id();
+        this.link = "https://job.daegu.go.kr/daegujob/searchJobView?" + id;
     }
+
 }

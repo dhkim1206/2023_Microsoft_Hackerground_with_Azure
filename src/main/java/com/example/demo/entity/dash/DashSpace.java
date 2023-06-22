@@ -18,12 +18,9 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DashSpace {
-    //space는 알림x
-    //입주 공간 바로가기 링크는 공지 클릭 지원x -> 그냥 사이트 링크 주기
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String dept;
     private String infra;
     private String location;
@@ -46,17 +43,17 @@ public class DashSpace {
     }
 
     public void setInfra(Element element) {
-        String infra = element.attr("td[data-table-type=infra]");
+        String infra = element.select("td[data-table-type=infra]").text();
         this.infra = infra;
     }
 
     public void setLocation(Element element) {
-        String location = element.attr("td[data-table-type=location]");
+        String location = element.select("td[data-table-type=location]").text();
         this.location = location;
     }
 
     public void setField(Element element) {
-        String field = element.attr("td[data-table-type=field]");
+        String field = element.select("td[data-table-type=field]").text();
         this.field = field;
     }
 

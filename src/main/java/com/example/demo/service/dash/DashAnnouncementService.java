@@ -3,6 +3,7 @@ package com.example.demo.service.dash;
 import com.example.demo.constant.URLs;
 import com.example.demo.entity.dash.DashAnnouncement;
 import com.example.demo.repository.dash.DashAnnouncementRepository;
+import lombok.RequiredArgsConstructor;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -11,7 +12,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -19,32 +19,26 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class DashAnnouncementService {
-    private DashAnnouncementRepository repository;
+    private final DashAnnouncementRepository repository;
+    private List<DashAnnouncement> dashAnnouncements = new ArrayList<>();
     private WebDriver driver;
-    private List<DashAnnouncement> dashAnnouncements;
 
-    @Autowired
-    public DashAnnouncementService(DashAnnouncementRepository repository) {
-        this.repository = repository;
-        System.setProperty("webdriver.http.factory", "jdk-http-client");
-        System.setProperty("webdriver.chrome.driver", "/Users/jeongchan-yeong/Desktop/chromedriver");
-        dashAnnouncements = new ArrayList<>();
-    }
-
-    public boolean crawlingTask() {
+    public void crawlingTask() {
         this.driver = new ChromeDriver();
 
-        int pageIndex = 1;  //페이지 번호 = 첫 페이지
-        boolean notification = false;   //알림 송신 여부
+        int pageIndex = 1;
 
         //웹 연결
         driver.get(URLs.dashAnnouncement);
 
         //====================최신 공고 체크====================/
-        String pageSource = driver.getPageSource(); //최신순으로 정렬된 페이지
+        String pageSource = driver.getPageSource();
         Document doc = Jsoup.parse(pageSource);
-        if (notiCheck(doc)) notification = true;
+
+        if (notiCheck(doc))
+            System.out.println("알림 메소드 호출");
 
         //정렬 기준을 마감순으로 변경
         WebElement sortingElement = driver.findElement(By.name("searchCondition9"));
@@ -56,6 +50,11 @@ public class DashAnnouncementService {
 
         //각 페이지를 이동하면서 마감 공고 이전까지 크롤링
         while (true) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
             //============================크롤링=============================//
             //크롤링에 사용할 페이지 정보 받기
             pageSource = driver.getPageSource();
@@ -66,6 +65,7 @@ public class DashAnnouncementService {
 
             //=========================다음 페이지 이동=========================//
             WebElement nextPageButton;
+
             //10 페이지 단위로 다음 페이지 버튼으로 이동
             if (pageIndex % 10 == 0) {
                 nextPageButton = driver.findElement(By.className("page_next"));
@@ -87,8 +87,6 @@ public class DashAnnouncementService {
 
         //브라우저 종료
         driver.quit();
-
-        return notification;
     }
 
     public boolean notiCheck(Document document) {
@@ -110,7 +108,6 @@ public class DashAnnouncementService {
     }
 
     public boolean saveAnnouncement(Document document) {
-        //여기서는 크롤링만 진행하고 최신 공고 비교와 알림 기능은 도형이가 만든 서비스에 추가
         boolean isClosed = false;
 
         //전체 크롤링 후 저장

@@ -3,6 +3,8 @@ package com.example.demo.entity.job;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -17,40 +19,43 @@ public class JobPublicCompany {
     private String title;
     private String location;
     private String career;
-    private String Education;
+    private String education;
     private String payType;
     private String dday;
     private String link;
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+    public JobPublicCompany(Element element) {
+        setCompanyName(element);
+        setTitle(element);
+        setInfo(element);
+        setDday(element);
+        setLink(element);
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+
+    public void setCompanyName(Element element) {
+        this.companyName = element.select("b").first().text();
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setTitle(Element element) {
+        this.title = element.select("a").first().text();
     }
 
-    public void setCareer(String career) {
-        this.career = career;
+    public void setInfo(Element element) {
+        Elements elements = element.select("li");
+        this.location = elements.get(0).text();
+        this.career = elements.get(1).text();
+        this.education = elements.get(2).text();
+        this.payType = elements.get(3).text();
+
     }
 
-    public void setEducation(String education) {
-        Education = education;
+    public void setDday(Element element) {
+        this.dday = element.select(".search_dday").first().text();
     }
 
-    public void setPayType(String payType) {
-        this.payType = payType;
-    }
-
-    public void setDday(String dday) {
-        this.dday = dday;
-    }
-
-    public void setLink(String link) {
-        this.link = link;
+    public void setLink(Element element) {
+        this.id = element.select("button").first().id();
+        this.link = "https://job.daegu.go.kr/daegujob/searchJobView?" + id;
     }
 }

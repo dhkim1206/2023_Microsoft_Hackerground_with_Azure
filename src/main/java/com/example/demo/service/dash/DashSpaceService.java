@@ -19,14 +19,12 @@ import java.util.List;
 @Service
 public class DashSpaceService {
     private DashSpaceRepository repository;
-    private WebDriver driver;
     private List<DashSpace> dashSpaces;
+    private WebDriver driver;
     private int maxPageIndex = 0;
 
     public DashSpaceService(DashSpaceRepository repository) {
         this.repository = repository;
-        System.setProperty("webdriver.http.factory", "jdk-http-client");
-        System.setProperty("webdriver.chrome.driver", "/Users/jeongchan-yeong/Desktop/chromedriver");
         dashSpaces = new ArrayList<>();
     }
 
@@ -38,7 +36,6 @@ public class DashSpaceService {
 
         //웹 연결
         driver.get(URLs.dashSpace);
-
 
         //정렬 기준을 리스트로 변경
         WebElement listButton = driver.findElement(By.cssSelector(".btn_l"));
@@ -72,6 +69,11 @@ public class DashSpaceService {
         while (true) {
             //============================크롤링=============================//
             //크롤링에 사용할 페이지 정보 받기
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
             pageSource = driver.getPageSource();
             doc = Jsoup.parse(pageSource);
 
