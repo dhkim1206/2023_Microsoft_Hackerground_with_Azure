@@ -42,7 +42,7 @@
 
 ## 제품 소개 슬라이드
 
-**(필수)** 제품 또는 서비스를 소개하는 슬라이드 덱을 리포지토리에 추가해 주세요. 슬라이드 덱은 [decks](./decks) 디렉토리에 저장한 후 이곳에 링크를 걸어주세요.
+![image](https://github.com/hackersground-kr/httpsgithubcomjchyngHackerGround/blob/main/decks/%EC%B2%AD%EB%85%84%20%EC%A0%95%EC%B1%85%20%EC%95%8C%EB%A6%BC%EC%9D%B4%20-%20%EC%96%B4%EB%8D%B0%EA%B0%80%EB%85%B8.pptx)
 
 ## 제품 소개 동영상
 
