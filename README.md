@@ -43,12 +43,6 @@
 
 1. 리포지토리를 포크합니다. https://github.com/hackersground-kr/httpsgithubcomjchyngHackerGround
 2. <Azure포털에서 리소스 생성> https://portal.azure.com/
-   
-  리소스 그룹 : 우리의 리소스를 모아둘 폴더 역할
-Hackers Ground 구독에서는 저희가 직접 리소스 그룹을 만들 수 있는 권한이 없기에 패스하고
-
-![image](https://github.com/hackersground-kr/httpsgithubcomjchyngHackerGround/assets/69470424/1ea48e1c-9d28-4d30-be93-310de43dd422)
-
 
 아래와 같이 할당 받은 리소스 그룹에서 리소스들을 생성하겠습니다.
 ![image](https://github.com/hackersground-kr/httpsgithubcomjchyngHackerGround/assets/69470424/ba8e7832-494c-4ce0-887b-4e35d06a26d6)
