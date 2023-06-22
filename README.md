@@ -217,7 +217,7 @@ vscode로 배포를 시작합니다.
 ![image](https://github.com/hackersground-kr/httpsgithubcomjchyngHackerGround/assets/69470424/c8fa3879-bd29-4a7a-b0b9-a69a78485251)
 
 
-스냅샷 선택
+이미지와 같이 스냅샷 선택
 
 
 ![image](https://github.com/hackersground-kr/httpsgithubcomjchyngHackerGround/assets/69470424/adf6f04c-029a-4968-a034-54796a53c7fa)
