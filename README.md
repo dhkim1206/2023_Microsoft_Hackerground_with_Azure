@@ -39,10 +39,10 @@
 - VSCODE(Azure Tools확장, Extension Pack for Java 확장)
 
 ## 시작하기
-- 리포지토리를 포크합니다.
 
 
-1. <Azure포털에서 리소스 생성> https://portal.azure.com/
+1. 리포지토리를 포크합니다.
+2. <Azure포털에서 리소스 생성> https://portal.azure.com/
    
   리소스 그룹 : 우리의 리소스를 모아둘 폴더 역할
 Hackers Ground 구독에서는 저희가 직접 리소스 그룹을 만들 수 있는 권한이 없기에 패스하고
