@@ -5,34 +5,104 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, { useState } from 'react';
 import Font from './../components/Font';
+import React, { useEffect, useState } from 'react';
+import messaging from '@react-native-firebase/messaging';
+import PushNotification from 'react-native-push-notification';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const TopicCheck = ({ navigation }) => {
-  const [topicCheck, setTopicCheck] = useState([
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-  ]);
+  const [token, setToken] = useState('');
+  const [isLogin, setIsLogin] = useState(false);
 
-  const onCheck = index => {
-    const newCheck = [...topicCheck];
+  useEffect(() => {
+    onCheckToken();
 
-    newCheck[index] = !newCheck[index];
-    setTopicCheck(newCheck);
+    messaging().onMessage(handleForegroundNotification);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [navigation]);
+
+  const onCheckToken = async () => {
+    const getToken = await AsyncStorage.getItem('token');
+    if (getToken) {
+      setIsLogin(true);
+      navigation.navigate('Nav');
+    } else {
+      setIsLogin(false);
+    }
   };
 
-  const onNext = () => {
-    navigation.navigate('Dash');
+  const requestPermissions = async () => {
+    const authStatus = await messaging().requestPermission();
+    const enabled =
+      authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
+      authStatus === messaging.AuthorizationStatus.PROVISIONAL;
+
+    if (enabled) {
+      console.log('Authorization status:', authStatus);
+      getToken();
+    }
+  };
+
+  const getToken = async () => {
+    await setToken(await messaging().getToken());
+    await AsyncStorage.setItem('token', await messaging().getToken());
+    await setIsLogin(true);
+    console.log('Device Token:', await messaging().getToken());
+  };
+
+  const handleForegroundNotification = async remoteMessage => {
+    console.log('Foreground Notification:', remoteMessage);
+
+    PushNotification.localNotification({
+      title: remoteMessage.notification.title,
+      message: remoteMessage.notification.body,
+    });
+  };
+
+  const [topicCheck, setTopicCheck] = useState({
+    지원사업공고: false,
+    입주공간: false,
+    공기업: false,
+    공무원: false,
+    사기업: false,
+    일자리: false,
+    주거: false,
+    교육: false,
+    복지문화: false,
+  });
+
+  const onCheck = text => {
+    setTopicCheck(current => {
+      let newTopicCheck = { ...current };
+      newTopicCheck[text] = !newTopicCheck[text];
+      return newTopicCheck;
+    });
+    requestPermissions();
+  };
+
+  const onFetch = async () => {
+    try {
+      if (isLogin) {
+        let arr = [];
+        Object.keys(topicCheck).map(item => topicCheck[item] && arr.push(item));
+        await AsyncStorage.setItem('topicList', JSON.stringify(arr));
+        const data = { [token]: arr };
+        // const response = await fetch('', {
+        //   method: 'POST',
+        //   headers: {
+        //     'Content-Type': 'application/json',
+        //   },
+        //   body: JSON.stringify(data),
+        // });
+        // console.log('POST 성공 : ' + response);
+        navigation.navigate('Nav');
+      }
+    } catch (error) {
+      console.error('POST 실패 : ' + error);
+    }
+
   };
 
   return (
@@ -52,98 +122,170 @@ const TopicCheck = ({ navigation }) => {
           </Text>
           <View style={styles.topicButtonList}>
             <TouchableOpacity
-              onPress={() => onCheck(0)}
-              style={styles.topicButton}>
-              <Text style={styles.topicText}>지원 사업 공고</Text>
+
+              onPress={() => onCheck('지원사업공고')}
+              style={[
+                styles.topicButton,
+                topicCheck['지원사업공고']
+                  ? styles.checkButton
+                  : styles.disabledButton,
+              ]}>
+              <Text
+                style={[
+                  styles.topicText,
+                  topicCheck['지원사업공고']
+                    ? styles.checkText
+                    : styles.topicText,
+                ]}>
+                <Font text={'지원 사업 공고'} />
+              </Text>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => onCheck(1)}
-              style={styles.topicButton}>
-              <Text style={styles.topicText}>입주 공간</Text>
+              onPress={() => onCheck('입주공간')}
+              style={[
+                styles.topicButton,
+                topicCheck['입주공간']
+                  ? styles.checkButton
+                  : styles.disabledButton,
+              ]}>
+              <Text
+                style={[
+                  styles.topicText,
+                  topicCheck['입주공간'] ? styles.checkText : styles.topicText,
+                ]}>
+                <Font text={'입주 공간'} />
+              </Text>
+
             </TouchableOpacity>
           </View>
         </View>
         <View style={styles.topicItem}>
           <Text style={styles.topicTitle}>
-            청년 정책 : 대구 청년들을 위한 정책
+            <Font text={'일자리 포털 : 채용 정보'} />
           </Text>
           <View style={styles.topicButtonList}>
             <TouchableOpacity
-              onPress={() => onCheck(2)}
-              style={styles.topicButton}>
-              <Text style={styles.topicText}>일자리</Text>
+              onPress={() => onCheck('공무원')}
+              style={[
+                styles.topicButton,
+                topicCheck['공무원']
+                  ? styles.checkButton
+                  : styles.disabledButton,
+              ]}>
+              <Text
+                style={[
+                  styles.topicText,
+                  topicCheck['공무원'] ? styles.checkText : styles.topicText,
+                ]}>
+                <Font text={'공무원'} />
+              </Text>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => onCheck(3)}
-              style={styles.topicButton}>
-              <Text style={styles.topicText}>추가</Text>
+              onPress={() => onCheck('공기업')}
+              style={[
+                styles.topicButton,
+                topicCheck['공기업']
+                  ? styles.checkButton
+                  : styles.disabledButton,
+              ]}>
+              <Text
+                style={[
+                  styles.topicText,
+                  topicCheck['공기업'] ? styles.checkText : styles.topicText,
+                ]}>
+                <Font text={'공기업'} />
+              </Text>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => onCheck(4)}
-              style={styles.topicButton}>
-              <Text style={styles.topicText}>교육</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => onCheck(5)}
-              style={styles.topicButton}>
-              <Text style={styles.topicText}>복지 문화</Text>
+              onPress={() => onCheck('사기업')}
+              style={[
+                styles.topicButton,
+                topicCheck['사기업']
+                  ? styles.checkButton
+                  : styles.disabledButton,
+              ]}>
+              <Text
+                style={[
+                  styles.topicText,
+                  topicCheck['사기업'] ? styles.checkText : styles.topicText,
+                ]}>
+                <Font text={'사기업'} />
+              </Text>
             </TouchableOpacity>
           </View>
         </View>
         <View style={styles.topicItem}>
           <Text style={styles.topicTitle}>
-            일자리 포털 : 대구일자리포털, 채용정보, 인재정보, 교육/훈련정보,
-            지원정책 등 대구시의 다양한 일자리정보 제공
+            <Font text={'청년 정책 : 대구 청년들을 위한 정책'} />
           </Text>
-          <View style={styles.topicSubItem}>
-            <Text>채용 정보</Text>
-            <View style={styles.topicButtonList}>
-              <TouchableOpacity
-                onPress={() => onCheck(6)}
-                style={styles.topicButton}>
-                <Text style={styles.topicText}>공기업</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => onCheck(7)}
-                style={styles.topicButton}>
-                <Text style={styles.topicText}>공무원</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => onCheck(8)}
-                style={styles.topicButton}>
-                <Text style={styles.topicText}>사기업</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-          <View style={styles.topicSubItem}>
-            <Text>교육 훈련 정보</Text>
-            <View style={styles.topicButtonList}>
-              <TouchableOpacity
-                onPress={() => onCheck(9)}
-                style={styles.topicButton}>
-                <Text style={styles.topicText}>교육 훈련 정보</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-          <View style={styles.topicSubItem}>
-            <Text>지원 정책</Text>
-            <View style={styles.topicButtonList}>
-              <TouchableOpacity
-                onPress={() => onCheck(10)}
-                style={styles.topicButton}>
-                <Text style={styles.topicText}>사업자</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => onCheck(11)}
-                style={styles.topicButton}>
-                <Text style={styles.topicText}>구직자</Text>
-              </TouchableOpacity>
-            </View>
+          <View style={styles.topicButtonList}>
+            <TouchableOpacity
+              onPress={() => onCheck('일자리')}
+              style={[
+                styles.topicButton,
+                topicCheck['일자리']
+                  ? styles.checkButton
+                  : styles.disabledButton,
+              ]}>
+              <Text
+                style={[
+                  styles.topicText,
+                  topicCheck['일자리'] ? styles.checkText : styles.topicText,
+                ]}>
+                <Font text={'일자리'} />
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => onCheck('주거')}
+              style={[
+                styles.topicButton,
+                topicCheck['주거'] ? styles.checkButton : styles.disabledButton,
+              ]}>
+              <Text
+                style={[
+                  styles.topicText,
+                  topicCheck['주거'] ? styles.checkText : styles.topicText,
+                ]}>
+                <Font text={'주건'} />
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => onCheck('교육')}
+              style={[
+                styles.topicButton,
+                topicCheck['교육'] ? styles.checkButton : styles.disabledButton,
+              ]}>
+              <Text
+                style={[
+                  styles.topicText,
+                  topicCheck['교육'] ? styles.checkText : styles.topicText,
+                ]}>
+                <Font text={'교육'} />
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => onCheck('복지문화')}
+              style={[
+                styles.topicButton,
+                topicCheck['복지문화']
+                  ? styles.checkButton
+                  : styles.disabledButton,
+              ]}>
+              <Text
+                style={[
+                  styles.topicText,
+                  topicCheck['복지문화'] ? styles.checkText : styles.topicText,
+                ]}>
+                <Font text={'복지 문화'} />
+              </Text>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
-      <TouchableOpacity onPress={onNext}>
-        <Text>다음</Text>
+      <TouchableOpacity onPress={onFetch} style={styles.nextButton}>
+        <Text style={styles.nextText}>
+          <Font text={'다음'} />
+        </Text>
       </TouchableOpacity>
     </SafeAreaView>
   );

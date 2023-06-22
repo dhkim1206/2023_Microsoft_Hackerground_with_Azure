@@ -8,7 +8,6 @@
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import React from 'react';
 import Loading from './page/Loading';
 import TopicCheck from './page/TopicCheck';
 import Dash from './page/Nav/Dash';
@@ -18,6 +17,7 @@ import Setting from './page/Nav/Setting';
 import Notification from './page/Notification';
 import Scrap from './page/Scrap';
 import Nav from './page/Nav/Nav';
+import React from 'react';
 
 const Stack = createNativeStackNavigator();
 
