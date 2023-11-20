@@ -38,7 +38,7 @@
   
 - VSCODE(Azure Tools확장, Extension Pack for Java 확장)
 
-## 시작하기
+## CI/CD 시작하기
 
 
 1. 리포지토리를 포크합니다. https://github.com/hackersground-kr/httpsgithubcomjchyngHackerGround
